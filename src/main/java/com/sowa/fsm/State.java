@@ -3,7 +3,9 @@ package com.sowa.fsm;
 public class State {
 
     private String id;
-    private boolean accepting = false;
+    private boolean accepting;
+
+    /** change this to dictionary */
     private String[] sets;
 
     public State(String id, boolean accepting, String[] sets) {

@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 
-public class FileReaderTest {
+public class GraphTest {
 
     String fileName = "even0bin.txt";
     String path = "./src/main/resources/" + fileName;
-    FileReader fileReader = new FileReader(path);
+    Graph graph = new Graph();
 
     @Test
     void testRead() throws FileNotFoundException {
-        fileReader.read();
+        graph.buildGraph();
     }
 }
