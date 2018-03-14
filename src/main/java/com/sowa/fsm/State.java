@@ -1,17 +1,17 @@
 package com.sowa.fsm;
 
+import java.util.Map;
+
 public class State {
 
     private String id;
     private boolean accepting;
+    Map<String, String> transitions;
 
-    /** change this to dictionary */
-    private String[] sets;
-
-    public State(String id, boolean accepting, String[] sets) {
+    public State(String id, boolean accepting, Map<String, String> transitions) {
         this.id = id;
         this.accepting = accepting;
-        this.sets = sets;
+        this.transitions = transitions;
     }
 
     public String getId() {
@@ -22,8 +22,7 @@ public class State {
         return accepting;
     }
 
-    public String[] getSets() {
-        return sets;
+    public Map<String, String> getTransitions() {
+        return transitions;
     }
-
 }
