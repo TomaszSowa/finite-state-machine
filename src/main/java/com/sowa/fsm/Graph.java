@@ -24,11 +24,27 @@ public class Graph {
     public void checkSequence(String filePath) throws FileNotFoundException {
 
         Scanner sequenceScanner =  new Scanner(new File(filePath));
+        String sequence;
+
         while (sequenceScanner.hasNextLine()) {
-            System.out.println(sequenceScanner.nextLine());
+            sequence = sequenceScanner.nextLine();
+
+            for (int i = 1; i < sequence.length() - 1; i++) {
+                System.out.print(sequence.charAt(i) + " ");
+                validateSequence(sequence.charAt(i));
+            }
+
+
         }
 
         sequenceScanner.close();
+    }
+
+    private void validateSequence(char ch) {
+
+
+//        System.out.println();
+
     }
 
     private Map<Character, String> mapTransitions(Scanner graphScanner, int lines) {
