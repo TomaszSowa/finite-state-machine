@@ -6,9 +6,9 @@ public class State {
 
     private String id;
     private boolean accepting;
-    Map<String, String> transitions;
+    private Map<Character, String> transitions;
 
-    public State(String id, boolean accepting, Map<String, String> transitions) {
+    public State(String id, boolean accepting, Map<Character, String> transitions) {
         this.id = id;
         this.accepting = accepting;
         this.transitions = transitions;
@@ -22,7 +22,7 @@ public class State {
         return accepting;
     }
 
-    public Map<String, String> getTransitions() {
+    public Map<Character, String> getTransitions() {
         return transitions;
     }
 }
