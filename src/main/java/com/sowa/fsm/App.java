@@ -11,11 +11,11 @@ public class App {
         final String TRANSITIONS_FILE = "even0bin.txt";
         final String SEQUENCEFILE_FILE = "01.txt";
 
-        Graph graph = new Graph();
+        Graph graph = new Graph(PATH + TRANSITIONS_FILE);
         System.out.println("Starting FSM...");
 
         try {
-            graph.buildGraph(PATH + TRANSITIONS_FILE);
+            graph.buildGraph();
             graph.checkSequence(PATH + SEQUENCEFILE_FILE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

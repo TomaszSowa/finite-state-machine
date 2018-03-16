@@ -4,11 +4,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+import static jdk.nashorn.internal.objects.Global.print;
+
 public class Graph {
 
     private Map<String, State> graph = new HashMap<>();
+    String filePath;
+    String startingState;
 
-    public void buildGraph(String filePath) throws FileNotFoundException {
+    public Graph(String filePath) {
+        this.filePath = filePath;
+        try {
+            this.startingState = new Scanner(new File(filePath)).nextLine().split(" ")[0];
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void buildGraph() throws FileNotFoundException {
 
         Scanner graphScanner =  new Scanner(new File(filePath));
 
@@ -25,26 +38,45 @@ public class Graph {
 
         Scanner sequenceScanner =  new Scanner(new File(filePath));
         String sequence;
+        String stateId = startingState;
 
         while (sequenceScanner.hasNextLine()) {
             sequence = sequenceScanner.nextLine();
+            printState(startingState);
 
             for (int i = 1; i < sequence.length() - 1; i++) {
-                System.out.print(sequence.charAt(i) + " ");
-                validateSequence(sequence.charAt(i));
+                stateId = changeState(sequence.charAt(i), stateId);
+                if (stateId == null) break;
             }
 
-
+            if (stateId == null || graph.get(stateId).isAccepting() == false) {
+                System.out.println("\nNot accepted");
+            } else {
+                System.out.println("\nAccepted");
+            }
+            stateId = startingState;
         }
-
         sequenceScanner.close();
     }
 
-    private void validateSequence(char ch) {
+    private void printState(String state) {
 
+        if (graph.get(state).isAccepting()) {
+            System.out.print("((" + state + "))");
+        } else {
+            System.out.print("(" + state + ")");
+        }
+    }
 
-//        System.out.println();
-
+    private String changeState(char ch, String stateId) {
+        stateId = graph.get(stateId).getTransitions().get(ch);
+        System.out.print(" --" + ch + "--> ");
+        if (stateId != null) {
+            printState(stateId);
+        } else {
+            System.out.print("Wrong character!");
+        }
+        return stateId;
     }
 
     private Map<Character, String> mapTransitions(Scanner graphScanner, int lines) {
