@@ -12,7 +12,6 @@ public class App {
         final String SEQUENCEFILE_FILE = "01.txt";
 
         Graph graph = new Graph(PATH + TRANSITIONS_FILE);
-        System.out.println("Starting FSM...");
 
         try {
             graph.buildGraph();
@@ -20,14 +19,6 @@ public class App {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        /* test
-        String[] splitted = "Split,split2,split3".split(",", 2);
-        for (String str : splitted) System.out.println(str);
-        Scanner sc = new Scanner(System.in);
-        String aa = sc.nextLine();
-        System.out.println("'" + aa + "'");
-        */
 
     }
 }
