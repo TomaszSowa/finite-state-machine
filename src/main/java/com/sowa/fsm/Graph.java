@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import static jdk.nashorn.internal.objects.Global.print;
-
 public class Graph {
 
     private Map<String, State> graph = new HashMap<>();
