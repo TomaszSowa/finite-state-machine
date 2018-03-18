@@ -1,0 +1,12 @@
+1 false 2
+1 "b"
+2 "a"
+2 false 2
+3 "b"
+4 "a"
+3 true 2
+1 "b"
+2 "a"
+4 true 2
+3 "b"
+4 "a"

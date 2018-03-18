@@ -1,0 +1,8 @@
+"bbb"
+"abba"
+"baaaba"
+"abab"
+"baba"
+" bba"
+"a"
+"aa"
