@@ -1,6 +1,7 @@
 package com.sowa.fsm;
 
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 //import java.util.Scanner;
 
 public class App {
@@ -8,18 +9,23 @@ public class App {
     public static void main(String[] args) {
 
         final String PATH = "./src/main/resources/";
-//        final String TRANSITIONS_FILE = "even0bin.txt";
-//        final String SEQUENCEFILE_FILE = "01.txt";
-        final String TRANSITIONS_FILE = "bbab.txt";
-        final String SEQUENCEFILE_FILE = "ab.txt";
+        String transitionsFile;
+        String sequenceFile;
+        Scanner sc = new Scanner(System.in);
 
-        Graph graph = new Graph(PATH + TRANSITIONS_FILE);
+        System.out.println("Please input a transitions file name");
+        transitionsFile = sc.next();
+        Graph graph = new Graph(PATH + transitionsFile);
+
+        System.out.println("Please input a sequence file name");
+        sequenceFile = sc.next();
 
         try {
             graph.buildGraph();
-            graph.checkSequence(PATH + SEQUENCEFILE_FILE);
+            graph.checkSequence(PATH + sequenceFile);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.err.println("File not found");
         }
 
     }

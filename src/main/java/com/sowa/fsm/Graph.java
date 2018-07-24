@@ -15,7 +15,8 @@ public class Graph {
         try {
             this.startingState = new Scanner(new File(filePath)).nextLine().split(" ")[0];
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.err.println("File not found");
         }
     }
 
