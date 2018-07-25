@@ -9,24 +9,10 @@ public class App {
     public static void main(String[] args) {
 
         final String PATH = "./src/main/resources/";
-        String transitionsFile;
-        String sequenceFile;
-        Scanner sc = new Scanner(System.in);
+        Graph graph = new Graph(PATH);
 
-        System.out.println("Please input a transitions file name");
-        transitionsFile = sc.next();
-        Graph graph = new Graph(PATH + transitionsFile);
-
-        System.out.println("Please input a sequence file name");
-        sequenceFile = sc.next();
-
-        try {
-            graph.buildGraph();
-            graph.checkSequence(PATH + sequenceFile);
-        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-            System.err.println("File not found");
-        }
+        graph.buildGraph();
+        graph.checkSequence();
 
     }
 }
