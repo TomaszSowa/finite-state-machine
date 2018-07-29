@@ -2,7 +2,10 @@ package com.sowa.fsm;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 
 public class Graph {
 
@@ -10,17 +13,21 @@ public class Graph {
     String filePath;
     String startingState;
 
-    public Graph(String filePath) {
+    public Graph(String filePath) throws FileNotFoundException {
         this.filePath = filePath;
+        this.startingState = new Scanner(new File(filePath)).nextLine().split(" ")[0];
         try {
-            this.startingState = new Scanner(new File(filePath)).nextLine().split(" ")[0];
-        } catch (FileNotFoundException e) {
+            buildGraph();
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
+            System.err.println("Wrong file format.");
 //            e.printStackTrace();
-            System.err.println("File not found");
+            throw new FileNotFoundException();
         }
     }
 
-    public void buildGraph() throws FileNotFoundException {
+    private void buildGraph() throws FileNotFoundException, ArrayIndexOutOfBoundsException,
+                                        NumberFormatException {
+
 
         Scanner graphScanner =  new Scanner(new File(filePath));
 
