@@ -3,4 +3,5 @@
 ###<a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank">Theory</a>
 
 Example from Wikipedia:
-<img src="https://en.wikipedia.org/wiki/Finite-state_machine#/media/File:DFAexample.svg" width="500px"/>
+<img src="https://github.com/TomaszSowa/finite-state-machine/src/resources/fromwiki.png" width="500px">
+
